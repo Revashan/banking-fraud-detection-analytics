@@ -34,3 +34,21 @@ monitoring dashboards for risk and compliance teams.
 2. Run ETL:
 ```bash
 python src/etl.py
+
+3.Train model
+python src/train.py
+4.Generate Fraud scores
+python src/scoring.py
+5.Load fraud_scored_transactions.csv into Power BI
+
+---
+
+## 🧠 Data Dictionary (data/data_dictionary.md)
+
+```markdown
+| Column | Description |
+|------|------------|
+| Time | Seconds elapsed since first transaction |
+| V1–V28 | PCA transformed features (confidential banking variables) |
+| Amount | Transaction amount |
+| Class | 1 = Fraud, 0 = Legitimate |
