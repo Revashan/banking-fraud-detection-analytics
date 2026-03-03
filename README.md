@@ -17,38 +17,59 @@ monitoring dashboards for risk and compliance teams.
 - Power BI fraud monitoring dashboard
 - Actionable high-risk transaction list
 
-## Tools & Technologies
-- Python (pandas, numpy, scikit-learn)
-- SQL
-- Power BI
-- Jupyter Notebook
+## Tech Stack
 
-## Use Cases Covered
-- Fraud rate monitoring
-- Transaction risk scoring
-- Anomaly pattern identification
-- Compliance reporting
+Python (Data cleaning and feature engineering)
 
-## How to Run
-1. Place dataset in `data/raw/creditcard.csv`
-2. Run ETL:
-```bash
-python src/etl.py
+SQL (Data validation and analytics logic)
 
-3.Train model
-python src/train.py
-4.Generate Fraud scores
-python src/scoring.py
-5.Load fraud_scored_transactions.csv into Power BI
+Power BI (Dashboard and KPI visualization)
 
----
+GitHub (Version control and portfolio documentation)
 
-## 🧠 Data Dictionary (data/data_dictionary.md)
+## Key KPIs
 
-```markdown
-| Column | Description |
-|------|------------|
-| Time | Seconds elapsed since first transaction |
-| V1–V28 | PCA transformed features (confidential banking variables) |
-| Amount | Transaction amount |
-| Class | 1 = Fraud, 0 = Legitimate |
+Total Transactions
+
+Fraud Transactions
+
+Fraud Rate (%)
+
+Total Fraud Loss
+
+High Risk Transactions
+
+High Risk Fraud Loss
+
+These KPIs enable both operational and financial monitoring.
+Power BI Dashboard
+
+The dashboard provides:
+
+Executive KPI summary
+
+Fraud vs Legitimate transaction comparison
+
+Fraud distribution by transaction amount
+
+High-risk detection monitoring
+
+Financial exposure tracking
+
+Interactive filtering by transaction characteristics
+
+Future Improvements
+
+Machine Learning–based fraud probability model
+
+Real-time fraud monitoring pipeline
+
+Time-series anomaly detection
+
+Automated alert system
+
+Dynamic fraud risk threshold optimization
+
+Author
+Revathy
+Data Analytics | Fraud Detection | Risk Monitoring
