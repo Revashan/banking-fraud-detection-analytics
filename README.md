@@ -146,6 +146,5 @@ High-risk customer table, merchant category risk bar chart, country risk map, tr
 
 ---
 
-## Resume Summary
-
-Built an end-to-end banking fraud detection analytics solution using SQL, Python, and Power BI. Created a realistic 35,000-row transaction dataset with customer, merchant, device, channel, velocity, and fraud-risk features. Performed SQL-based data quality checks and fraud trend analysis, developed Python EDA and baseline ML models (Logistic Regression, Random Forest), and designed Power BI dashboards to monitor fraud KPIs, trends, high-risk channels, merchant categories, and suspicious customers.
+## Author
+Revathy Shanmugaraj
