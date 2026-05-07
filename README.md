@@ -8,7 +8,6 @@ monitoring dashboards for risk and compliance teams.
 
 ## Dataset
 - Source: Kaggle – Credit Card Fraud Detection
-- Target column: `Class` (1 = Fraud, 0 = Normal)
 
 ## Key Deliverables
 - Cleaned and validated transaction dataset
