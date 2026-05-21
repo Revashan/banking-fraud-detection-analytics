@@ -22,31 +22,26 @@ Banks need to detect and monitor suspicious credit card transactions to reduce f
 | Total Transaction Value | MYR 14,596,307.15 |
 | Fraud Amount | MYR 278,288.96 |
 
-Key features include: `transaction_id`, `transaction_datetime`, `customer_id`, `merchant_category`, `merchant_country`, `channel`, `device_type`, `auth_method`, `amount`, `is_foreign_transaction`, `is_new_device`, `distance_from_home_km`, `previous_declines_24h`, `amount_to_avg_ratio`, `ip_risk_score`, `is_fraud`, `fraud_pattern`.
-
-> The dataset is synthetic but designed with realistic banking fraud patterns. Safe for portfolio and interview use.
-
----
 
 ## Project Structure
 
 ```
 banking-fraud-detection-analytics/
 ├── data/
-│   ├── raw/                        # Raw transaction dataset
-│   └── processed/                  # Aggregated summaries and scored output
+│   ├── raw/                        
+│   └── processed/                 
 ├── sql/
 │   ├── 01_create_tables.sql
 │   ├── 02_data_quality_checks.sql
 │   └── 03_analytics_queries.sql
 ├── python/
-│   ├── 01_generate_dataset.py      # Synthetic dataset generation
-│   ├── 02_eda_and_modeling.py      # EDA + Logistic Regression / Random Forest
-│   └── 03_dashboard_visuals.py     # Chart exports
+│   ├── 01_generate_dataset.py      
+│   ├── 02_eda_and_modeling.py      
+│   └── 03_dashboard_visuals.py     
 ├── powerbi/
 │   ├── PowerBI_DAX_Measures.md
 │   └── PowerBI_Build_Guide.md
-├── screenshots/                    # Dashboard screenshots
+├── screenshots/                   
 └── README.md
 ```
 
@@ -57,39 +52,6 @@ banking-fraud-detection-analytics/
 - Python — pandas, scikit-learn, matplotlib
 - SQL — table creation, data quality checks, fraud analytics queries
 - Power BI — executive and risk investigation dashboards with DAX measures
-
----
-
-## Setup
-
-```bash
-pip install pandas numpy scikit-learn matplotlib pillow
-```
-
-Run EDA and modeling:
-
-```bash
-python python/02_eda_and_modeling.py
-```
-
-Run visual exports:
-
-```bash
-python python/03_dashboard_visuals.py
-```
-
----
-
-## Machine Learning Models
-
-Two baseline models are trained and evaluated:
-
-| Model | Notes |
-|---|---|
-| Logistic Regression | Class-weighted, max_iter=1000 |
-| Random Forest | 120 estimators, depth 12, balanced subsample |
-
-Outputs: ROC-AUC, confusion matrix, classification report, and a scored CSV with `fraud_probability` and `risk_band` (Low / Medium / High / Critical).
 
 ---
 
