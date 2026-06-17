@@ -86,7 +86,7 @@ For fraud use cases, **recall is important** because missing a fraud transaction
 
 ### 1. Executive Fraud Overview
 
-![Executive Fraud Overview](powerbi/screenshots/01_executive_fraud_overview.png)
+![Executive Fraud Overview](powerbi/screenshots/banking_fraud_detection_dashboard.png)
 
 Recommended visuals:
 
