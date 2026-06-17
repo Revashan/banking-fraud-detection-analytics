@@ -82,13 +82,11 @@ For fraud use cases, **recall is important** because missing a fraud transaction
 
 ## Power BI Dashboard
 
-> Important: Export these screenshots from the actual Power BI `.pbix` file after connecting to the processed dataset. Do not use mocked screenshots.
-
 ### 1. Executive Fraud Overview
 
 ![Executive Fraud Overview](powerbi/screenshots/banking_fraud_detection_dashboard.png)
 
-Recommended visuals:
+visuals:
 
 - Total transactions
 - Fraud cases
@@ -103,7 +101,7 @@ Recommended visuals:
 
 ![Risk Investigation](powerbi/powerbi_risk_investigation_dashboard.png)
 
-Recommended visuals:
+visuals:
 
 - High-risk transaction table
 - Risk score distribution
@@ -150,3 +148,6 @@ Recommended visuals:
 - Power BI risk dashboarding
 - Fraud investigation prioritisation
 - Business recommendation writing
+
+## Author
+   Revathy Shanmugaraj
