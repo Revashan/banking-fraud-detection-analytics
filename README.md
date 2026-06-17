@@ -101,7 +101,7 @@ Recommended visuals:
 
 ### 2. Risk Investigation Dashboard
 
-![Risk Investigation](powerbi/screenshots/02_risk_investigation.png)
+![Risk Investigation](powerbi/powerbi_risk_investigation_dashboard.png)
 
 Recommended visuals:
 
@@ -112,21 +112,6 @@ Recommended visuals:
 - Fraud by transaction hour
 - Merchant category risk ranking
 - Customer/card investigation queue
-
-### 3. Model Performance Dashboard
-
-![Model Performance](powerbi/screenshots/03_model_performance.png)
-
-Recommended visuals:
-
-- Confusion matrix
-- Precision
-- Recall
-- F1 score
-- False positives
-- False negatives
-- Threshold impact summary
-
 ---
 
 ## Key Insights
