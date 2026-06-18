@@ -1,153 +1,145 @@
 # Banking Credit Card Fraud Detection Analytics
 
-An end-to-end **fraud analytics and risk monitoring** project using SQL, Python, machine learning, and Power BI to identify suspicious credit card transactions and support fraud operations teams.
+End-to-end fraud detection project using SQL, Python (Random Forest), and Power BI — covering data generation, exploratory analysis, machine learning modelling, and interactive dashboards for fraud monitoring and risk investigation.
 
-This project demonstrates how transaction-level behavioural data can be transformed into fraud KPIs, risk scores, investigation queues, and executive dashboards.
+**Stack:** SQL · Python · scikit-learn · Power BI  
+**Domain:** Financial Services · Fraud Risk Analytics
 
 ---
 
 ## Business Problem
 
-Banks need to detect suspicious card transactions quickly to reduce fraud losses, protect customers, and support fraud investigation teams.
-
-Fraud risk can increase when transactions involve:
-
-- Foreign country usage
-- New or unrecognised devices
-- High transaction amount deviation
-- Night-time activity
-- High-risk merchant categories
-- Repeated failed attempts
-- Unusual transaction velocity
-
-This project identifies fraud patterns and provides an analytics dashboard for monitoring fraud exposure and prioritising investigation.
+Banks lose significant revenue to undetected credit card fraud. Fraud operations teams need to prioritise which cases to investigate, but fraud is rare — making pattern detection harder. This project identifies fraud signals across channel, merchant category, device type, geography, transaction velocity, and amount deviation to help teams focus on the highest-risk cases.
 
 ---
 
 ## Dataset
 
-This project uses a synthetic credit card transaction dataset created for fraud analytics practice.
-
 | Attribute | Value |
 |---|---|
-| File | `data/raw/credit_card_transactions.csv` |
-| Transaction Records | 35,000 |
+| Total Transactions | 35,000 |
+| Total Columns | 34 |
 | Fraud Cases | 313 |
 | Fraud Rate | 0.89% |
-| Main Target | `is_fraud` |
-| Currency | MYR |
+| Total Transaction Value | MYR 14,596,307 |
+| Total Fraud Amount | MYR 278,289 |
+| Data Type | Synthetically generated to simulate real banking patterns |
 
 ---
 
-## Tools Used
+## Project Structure
 
-- **SQL**: data quality checks, fraud KPI queries, risk analysis
-- **Python**: EDA, feature engineering, machine learning model
-- **Scikit-learn**: fraud classification model
-- **Power BI**: fraud monitoring dashboards
-- **DAX**: fraud rate, fraud amount, risk scoring KPIs
-
----
-
-## Business Questions Answered
-
-1. What is the overall fraud rate and fraud amount?
-2. Which channels have the highest fraud exposure?
-3. Which merchant categories are most risky?
-4. What transaction behaviour is strongly associated with fraud?
-5. Which customers or cards should be prioritised for review?
-6. How can the fraud team reduce manual review effort?
-7. What model performance metrics matter for imbalanced fraud data?
-
----
-
-## Important Fraud Analytics Note
-
-Fraud data is highly imbalanced. Accuracy alone is not enough.
-
-This project should evaluate the model using:
-
-- Precision
-- Recall
-- F1 Score
-- Confusion Matrix
-- PR-AUC
-- False Positive count
-- False Negative count
-- Threshold tuning
-
-For fraud use cases, **recall is important** because missing a fraud transaction can create financial loss. Precision is also important because too many false positives can overload investigation teams.
+```
+├── data/
+│   ├── raw/                        # Raw transaction CSV
+│   └── processed/                  # Cleaned and enriched dataset
+├── notebooks/
+│   ├── 01_generate_dataset.ipynb   # Synthetic data generation
+│   ├── 02_eda_and_modelling.ipynb  # EDA, feature engineering, Random Forest
+│   └── 03_dashboard_visuals.ipynb  # Chart exports for reporting
+├── sql/
+│   ├── 01_create_tables.sql        # Schema and indexing
+│   ├── 02_data_quality_checks.sql  # Null checks, duplicate detection
+│   └── 03_analytics_queries.sql    # KPI queries, fraud patterns
+├── powerbi/
+│   ├── PowerBI_DAX_Measures.md     # All DAX measure documentation
+│   └── PowerBI_Build_Guide.md      # Dashboard build reference
+└── README.md
+```
 
 ---
 
-## Power BI Dashboard
+## Tech Stack
 
-### 1. Executive Fraud Overview
+| Tool | Purpose |
+|---|---|
+| SQL | Schema creation, data quality checks, fraud analytics queries |
+| Python (pandas, NumPy) | Data cleaning, EDA, feature engineering |
+| scikit-learn | Random Forest classifier, model evaluation |
+| Matplotlib / Seaborn | Exploratory visualisations |
+| Power BI + DAX | Executive and risk investigation dashboards |
 
-![Executive Fraud Overview](powerbi/screenshots/banking_fraud_detection_dashboard.png)
+---
 
-visuals:
+## Feature Engineering
 
-- Total transactions
-- Fraud cases
-- Fraud rate %
-- Fraud amount
-- Average fraud amount
-- Monthly fraud trend
-- Fraud rate by channel
-- Fraud amount by merchant category
+Key risk features engineered for the model:
 
-### 2. Risk Investigation Dashboard
+| Feature | Description |
+|---|---|
+| `amount_deviation` | Difference from customer's average spend |
+| `velocity_flag` | Multiple transactions within a short window |
+| `new_device_flag` | Transaction from a device not seen before |
+| `foreign_transaction_flag` | Country differs from customer's registered location |
+| `time_of_day_flag` | Late-night transaction (11 PM – 2 AM) |
+| `decline_history_flag` | Prior decline attempts on the same card |
 
-![Risk Investigation](powerbi/powerbi_risk_investigation_dashboard.png)
+---
 
-visuals:
+## SQL Analytics
 
-- High-risk transaction table
-- Risk score distribution
-- Fraud by device type
-- Fraud by country
-- Fraud by transaction hour
-- Merchant category risk ranking
-- Customer/card investigation queue
+- Table creation and indexing
+- Data quality checks (null rates, duplicate detection)
+- KPI summary: fraud rate, total fraud amount, monthly trend
+- Fraud breakdown by channel, merchant category, device type
+- Top high-risk customer table ranked by composite risk score
+- Hour-of-day and day-of-week fraud concentration
+
+---
+
+## Power BI Dashboards
+
+### Page 1 — Executive Fraud Overview
+
+KPI cards · Monthly fraud trend · Fraud rate by channel · Fraud amount by merchant category · Pattern donut chart
+
+[![Executive Fraud Overview](powerbi/screenshot_dashboard_overview.png)
+
+### Page 2 — Risk Investigation View
+
+High-risk customer table · Merchant category risk chart · Country risk map · Transaction hour/day heatmap
+
+[![Risk Investigation Dashboard](powerbi/powerbi_risk_investigation_dashboard.png)
+
 ---
 
 ## Key Insights
 
-1. Fraud activity is more likely when multiple risk signals occur together, such as foreign transaction, new device, high amount deviation, and night-time activity.
-
-2. E-commerce and mobile wallet transactions require stronger monitoring because card-not-present transactions have higher fraud exposure.
-
-3. High-risk merchant categories such as digital goods, gaming, travel, electronics, and jewellery should be reviewed separately.
-
-4. Small-value transactions should not be ignored because fraudsters may test cards using small transactions before larger attempts.
-
-5. A risk-scoring approach helps fraud teams prioritise investigation instead of manually reviewing all transactions.
+1. Fraud concentrates around foreign transactions combined with new devices — this combination is disproportionately represented in flagged cases.
+2. Ecommerce and mobile wallet channels carry the highest fraud risk due to card-not-present exposure.
+3. High-risk merchant categories: Jewellery, Digital Goods, Gaming, Travel, and Electronics.
+4. Small transactions can still be high-risk — fraudsters often test cards with micro-transactions before larger attempts.
+5. Combining multiple risk signals into a composite score outperforms any single rule-based flag.
 
 ---
 
 ## Business Recommendations
 
-| Area | Recommendation | Business Impact |
-|---|---|---|
-| Transaction Monitoring | Flag transactions with multiple risk signals | Improves early fraud detection |
-| Authentication | Trigger step-up authentication for foreign + new device + high amount transactions | Reduces fraud loss |
-| Investigation Queue | Create High, Medium, Low risk review queues | Improves fraud team productivity |
-| Merchant Risk | Monitor high-risk merchant categories separately | Helps identify repeated exposure |
-| Customer Protection | Send customer alerts for suspicious foreign or night transactions | Improves customer trust |
-| Model Monitoring | Track recall, precision, and false positives monthly | Keeps fraud model useful in production |
+| Area | Recommendation |
+|---|---|
+| Transaction Monitoring | Flag combinations of new device + foreign country + high amount deviation |
+| Authentication | Trigger step-up verification for abnormal transaction patterns |
+| Fraud Operations | Build tiered investigation queues by risk score (High / Critical) |
+| Customer Alerts | Notify customers on suspicious night-time or foreign transactions |
+| Merchant Risk | Increase monitoring for repeatedly exposed merchant categories |
+| Model Maintenance | Track fraud rate, false positives, and model drift monthly |
 
 ---
 
-## This Project Demonstrates
+## Getting Started
 
-- Fraud pattern analysis
-- Imbalanced classification understanding
-- SQL fraud analytics
-- Python machine learning workflow
-- Power BI risk dashboarding
-- Fraud investigation prioritisation
-- Business recommendation writing
+```bash
+pip install pandas numpy scikit-learn matplotlib seaborn jupyter
+
+# Run notebooks in order
+jupyter notebook notebooks/01_generate_dataset.ipynb
+jupyter notebook notebooks/02_eda_and_modelling.ipynb
+```
+
+For SQL: run scripts in order — `01_create_tables.sql` → `02_data_quality_checks.sql` → `03_analytics_queries.sql`
+
+---
 
 ## Author
-   Revathy Shanmugaraj
+
+**Revathy Shanmugaraj** · [github.com/Revashan](https://github.com/Revashan)
