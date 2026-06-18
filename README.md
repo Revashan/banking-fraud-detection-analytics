@@ -93,7 +93,7 @@ Key risk features engineered for the model:
 
 KPI cards · Monthly fraud trend · Fraud rate by channel · Fraud amount by merchant category · Pattern donut chart
 
-[![Executive Fraud Overview](powerbi/screenshot_dashboard_overview.png)
+[![Executive Fraud Overview](powerbi/screenshots/banking_fraud_detection_dashboard.png)
 
 ### Page 2 — Risk Investigation View
 
